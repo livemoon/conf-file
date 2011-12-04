@@ -1,0 +1,24 @@
+# Please check if all the paths in PATH are reachable, remove the ones that
+# are not.
+
+PATH=$HOME/bin:/usr/bin:/usr/ucb:/bin:/usr/local/bin:.
+MAILDIR=$HOME/.mails	# You'd better make sure it exists
+DEFAULT=$MAILDIR/Inbox/
+LOGFILE=$HOME/.procmaillog
+LOCKFILE=$HOME/.lockmail
+
+:0				# Anything from thf
+* ^(To|Cc).*@freebsd.org
+FreeBSD/			# will go to $MAILDIR/todd
+
+:0				# Anything from people at uunet
+* ^(To|Cc).*@openbsd.org
+OpenBSD/			# will go to $MAILDIR/uunetbox
+
+:0				# Anything from Henry
+* ^(To|Cc).*@googlegroups.com
+Groups/				# will go to $MAILDIR/henries
+
+:0
+*.*
+Inbox/
